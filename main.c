@@ -6,7 +6,7 @@
 /*   By: rafilipe <rafilipe@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 19:40:39 by rafilipe          #+#    #+#             */
-/*   Updated: 2023/03/20 02:08:22 by rafilipe         ###   ########.fr       */
+/*   Updated: 2023/03/20 12:57:07 by rafilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,17 @@ void execute(char *cmd, char **envp)
 	char *path;
 	
 	exec_cmd = ft_split(cmd, ' ');
-	cmd = *ft_split(cmd, ' ');
+	cmd = *exec_cmd;
 	printf("%s\n", cmd);
 	
-/* 	int k = 0;
- 	while (exec_cmd[k++])
+	int k = 0;
+ 	while (exec_cmd[k])
 	{	
-		printf("%s\n", exec_cmd[k]);
+		printf("EXEC_CMD --> %s\n", exec_cmd[k]);
+		k++;
 	}
 	
-	 */
+	
 	if (!(path = find_path(envp, cmd)))
 	{
 		free(exec_cmd);
@@ -97,9 +98,9 @@ void	child_process(char **argv, int *end, char **envp)
 	
 	infile = open(argv[1], O_RDONLY, 0777);
 /*****************************+
-	close(end[0]);
-	dup2(end1], STDOUT_FILENO);
 ********************************/
+	close(end[0]);
+	dup2(end[1], STDOUT_FILENO);
 	dup2(infile, STDIN_FILENO);
 	/* dup2(1, STDOUT_FILENO); */
 	execute(argv[2], envp);  
@@ -110,7 +111,15 @@ void	child_process(char **argv, int *end, char **envp)
 
 void	parent_process(char **argv, int *end, char **envp)
 {
-	;
+		int outfile;
+	
+	outfile = open(argv[4], O_RDWR | O_CREAT | O_APPEND, 0777);
+
+	close(end[1]);
+	dup2(end[0], STDIN_FILENO);
+	dup2(outfile, STDOUT_FILENO);
+	/* dup2(1, STDOUT_FILENO); */
+	execute(argv[3], envp);  
 }
 
 int main(int argc, char **argv, char **envp)
@@ -137,6 +146,9 @@ int main(int argc, char **argv, char **envp)
 		child_process(argv, end, envp);
 	wait(&child);
 	parent_process(argv, end, envp);
+
+	while (1)
+		;
 /* 	close(f1);
 	close(f2); */
 	return 0;

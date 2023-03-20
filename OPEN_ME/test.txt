@@ -1,0 +1,14 @@
+void	pipex(int f1, int f2, char *cmd1, char *cmd2, char **envp)
+{
+	int		end[2];
+	pid_t	child;
+
+	if (pipe(end) < 0)
+		error();
+	if ((child = fork()) < 0)
+		error();
+	if (child == 0) // Working on the child process
+		child_process(f1, cmd1, end);
+	wait(child);
+	parent_process(f2, cmd2, end);
+}

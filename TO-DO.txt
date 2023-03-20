@@ -1,0 +1,4 @@
+Pipex To-Do List
+
+1. Check if command exists
+2.Get PATH

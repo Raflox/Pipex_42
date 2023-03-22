@@ -6,7 +6,7 @@
 /*   By: rafilipe <rafilipe@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:48:43 by rafilipe          #+#    #+#             */
-/*   Updated: 2023/03/20 13:01:24 by rafilipe         ###   ########.fr       */
+/*   Updated: 2023/03/20 16:18:15 by rafilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,13 @@
 # include <string.h>
 # include <sys/wait.h>
 
-void    pipex(int f1, int f2, char *cmd1, char *cmd2, char **envp);
+// MAIN
 void	child_process(char **argv, int *end, char **envp);
+void	parent_process(char **argv, int *end, char **envp);
 
-
+// UTILS
+void	error(void);
+char	*find_path(char **envp, char *cmd);
+void	execute(char *cmd, char **envp);
 // Check if FD's are closed --> lsof -c a.out --> infinite loop in main()
 #endif

@@ -5,7 +5,7 @@
 
 NAME     := pipex
 CC       := gcc
-FLAGS    := -Wall -Wextra -Werror 
+FLAGS    := -Wall -Wextra -Werror -fsanitize=address -g
 
 define HEADER
   _  _ ___    _____ _                 
@@ -81,7 +81,7 @@ OBJS        := $(SRCS:.c=.o)
 ################################################################################
 
 
-CLR_RMV		:= \033[0m
+CLR_RMV		:= \033[0m]
 RED		    := \033[1;31m
 GREEN		:= \033[1;32m
 YELLOW		:= \033[1;33m
@@ -99,8 +99,6 @@ ${NAME}:	${OBJS}
 			@ echo "$${HEADER}"
 
 all:		${NAME}
-
-bonus:		all
 
 clean:
 			@ ${RM} *.o */*.o */*/*.o

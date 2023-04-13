@@ -16,12 +16,12 @@ void	child_process(char **argv, int *end, char **envp)
 {	
 	int	infile;
 
-	infile = open(argv[1], O_RDONLY, 0777);
+	infile = open(argv[1], O_RDONLY);
 	if (infile < 0)
 		error();
 	close(end[0]);
-	dup2(end[1], STDOUT_FILENO);
 	dup2(infile, STDIN_FILENO);
+	dup2(end[1], STDOUT_FILENO);
 	execute(argv[2], envp);
 }
 
@@ -42,6 +42,7 @@ int	main(int argc, char **argv, char **envp)
 {
 	int		end[2];
 	pid_t	child1;
+	pid_t	child2;
 
 	if (argc != 5)
 		exit(EXIT_FAILURE);// TODO: print ./pipex sintax 
@@ -52,7 +53,11 @@ int	main(int argc, char **argv, char **envp)
 		error();
 	if (child1 == 0)
 		child_process(argv, end, envp);
-	wait(&child1);
-	parent_process(argv, end, envp);
+	wait(&child2);
+	child2 = fork();
+	if (child1 < 0)
+		error();
+	if (child2 == 0)
+		parent_process(argv, end, envp);
 	return (0);
 }

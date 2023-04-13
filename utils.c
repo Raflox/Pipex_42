@@ -28,7 +28,7 @@ char	*find_path(char **envp, char *cmd)
 	while (!ft_strnstr(envp[i], "PATH", 4))
 		i++;
 	path = ft_substr(envp[i], 5, ft_strlen(envp[i]));
-	paths = ft_split(path, ':');
+	paths = ft_split(path, ':'); //free
 	free (path);
 	i = 0;
 	while (paths[i])
@@ -40,7 +40,7 @@ char	*find_path(char **envp, char *cmd)
 		free(path);
 		i++;
 	}
-	return (NULL);
+	return (cmd);
 }
 
 void	execute(char *cmd, char **envp)

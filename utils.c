@@ -6,20 +6,11 @@
 /*   By: rafilipe <rafilipe@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 15:37:51 by rafilipe          #+#    #+#             */
-/*   Updated: 2023/03/20 16:16:08 by rafilipe         ###   ########.fr       */
+/*   Updated: 2023/04/11 15:48:59 by rafilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-#include "./libft/ft_split.c"
-#include "./libft/ft_memset.c"
-#include "./libft/ft_bzero.c"
-#include "./libft/ft_calloc.c"
-#include "./libft/ft_strlen.c"
-#include "./libft/ft_substr.c"
-#include "./libft/ft_strnstr.c"
-#include "./libft/ft_strjoin.c"
-#include "./libft/ft_strdup.c"
 
 void	error(void)
 {

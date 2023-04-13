@@ -6,7 +6,7 @@
 /*   By: rafilipe <rafilipe@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 19:40:39 by rafilipe          #+#    #+#             */
-/*   Updated: 2023/03/20 16:19:33 by rafilipe         ###   ########.fr       */
+/*   Updated: 2023/04/11 16:26:55 by rafilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	parent_process(char **argv, int *end, char **envp)
 {
 	int	outfile;
 
-	outfile = open(argv[4], O_RDWR | O_CREAT | O_TRUNC, 0777);
+	outfile = open(argv[4], O_RDWR | O_CREAT | O_TRUNC, 0644);
 	if (outfile < 0)
 		error();
 	close(end[1]);
@@ -41,18 +41,18 @@ void	parent_process(char **argv, int *end, char **envp)
 int	main(int argc, char **argv, char **envp)
 {
 	int		end[2];
-	pid_t	child;
+	pid_t	child1;
 
 	if (argc != 5)
 		exit(EXIT_FAILURE);// TODO: print ./pipex sintax 
 	if (pipe(end) < 0)
 		error();
-	child = fork();
-	if (child < 0)
+	child1 = fork();
+	if (child1 < 0)
 		error();
-	if (child == 0)
+	if (child1 == 0)
 		child_process(argv, end, envp);
-	wait(&child);
+	wait(&child1);
 	parent_process(argv, end, envp);
 	return (0);
 }

@@ -5,7 +5,7 @@
 
 NAME     := pipex
 CC       := gcc
-FLAGS    := -Wall -Wextra -Werror -fsanitize=address -g
+FLAGS    := -Wall -Wextra -Werror #-fsanitize=address -g
 
 define HEADER
   _  _ ___    _____ _                 
@@ -81,12 +81,12 @@ OBJS        := $(SRCS:.c=.o)
 ################################################################################
 
 
-CLR_RMV		:= \033[0m]
+CLR_RMV		:= \033[0m
 RED		    := \033[1;31m
-GREEN		:= \033[1;32m
+GREEN		  := \033[1;32m
 YELLOW		:= \033[1;33m
-BLUE		:= \033[1;34m
-CYAN 		:= \033[1;36m
+BLUE		  := \033[1;34m
+CYAN 		  := \033[1;36m
 RM		    := rm -f
 
 

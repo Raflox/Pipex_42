@@ -30,5 +30,5 @@ void	parent_process(char **argv, int *end, char **envp);
 void	error(void);
 char	*find_path(char **envp, char *cmd);
 void	execute(char *cmd, char **envp);
-// Check if FD's are closed --> lsof -c a.out --> infinite loop in main()
+
 #endif

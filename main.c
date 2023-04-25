@@ -6,7 +6,7 @@
 /*   By: rafilipe <rafilipe@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 19:40:39 by rafilipe          #+#    #+#             */
-/*   Updated: 2023/04/11 16:26:55 by rafilipe         ###   ########.fr       */
+/*   Updated: 2023/04/25 14:13:19 by rafilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ int	main(int argc, char **argv, char **envp)
 	pid_t	child2;
 
 	if (argc != 5)
-		exit(EXIT_FAILURE);// TODO: print ./pipex sintax 
+	{
+		write(1, "Error!\nSyntax should be: ./pipex file1 \"cmd1\" \"cmd2\" file2\n", 59);
+		exit(EXIT_FAILURE);
+	}
 	if (pipe(end) < 0)
 		error();
 	child1 = fork();

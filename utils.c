@@ -6,7 +6,7 @@
 /*   By: rafilipe <rafilipe@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 15:37:51 by rafilipe          #+#    #+#             */
-/*   Updated: 2023/04/11 15:48:59 by rafilipe         ###   ########.fr       */
+/*   Updated: 2023/04/25 13:06:30 by rafilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,24 @@ void	error(void)
 	exit(EXIT_FAILURE);
 }
 
+void	clean_matrix(char **matrix)
+{
+	int	i;
+
+	i = 0;
+	while (matrix[i])
+	{	
+		free(matrix[i]);
+		i++;
+	}
+	free(matrix);
+}
+
 char	*find_path(char **envp, char *cmd)
 {
 	int		i;
 	char	*path;
-	char 	*temp;
+	char	*temp;
 	char	**paths;
 
 	i = 0;
@@ -42,13 +55,7 @@ char	*find_path(char **envp, char *cmd)
 		free(path);
 		i++;
 	}
-	i = 0;
-	while (paths[i])
-	{	
-		free(paths[i]);
-		i++;
-	}
-	free(paths);
+	clean_matrix(paths);
 	return (cmd);
 }
 

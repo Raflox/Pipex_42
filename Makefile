@@ -5,7 +5,7 @@
 
 NAME     := pipex
 CC       := gcc
-FLAGS    := -Wall -Wextra -Werror #-fsanitize=address -g
+FLAGS    := -Wall -Wextra -Werror -fsanitize=address -g
 
 define HEADER
   _  _ ___    _____ _                 

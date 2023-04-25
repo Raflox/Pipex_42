@@ -25,15 +25,15 @@ char	*find_path(char **envp, char *cmd)
 	char	**paths;
 
 	i = 0;
-	while (!ft_strnstr(envp[i], "PATH", 4))
+	while (!ft_strnstr(envp[i], "PATH", 4)) //strcmp?
 		i++;
-	path = ft_substr(envp[i], 5, ft_strlen(envp[i]));
+	path = ft_substr(envp[i], 5, ft_strlen(envp[i])); //avancar poiter em vez do substr
 	paths = ft_split(path, ':'); //free
 	free (path);
 	i = 0;
 	while (paths[i])
 	{
-		path = ft_strjoin(paths[i], "/");
+		path = ft_strjoin(paths[i], "/"); //add variavel temp
 		path = ft_strjoin(path, cmd);
 		if (!access(path, F_OK))
 			return (path);

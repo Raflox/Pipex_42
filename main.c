@@ -12,7 +12,7 @@
 
 #include "pipex.h"
 
-void	child_process(char **argv, int *end, char **envp)
+void	child1_process(char **argv, int *end, char **envp)
 {	
 	int	infile;
 
@@ -25,7 +25,7 @@ void	child_process(char **argv, int *end, char **envp)
 	execute(argv[2], envp);
 }
 
-void	parent_process(char **argv, int *end, char **envp)
+void	child2_process(char **argv, int *end, char **envp)
 {
 	int	outfile;
 
@@ -41,6 +41,7 @@ void	parent_process(char **argv, int *end, char **envp)
 int	main(int argc, char **argv, char **envp)
 {
 	int		end[2];
+	int		status;
 	pid_t	child1;
 	pid_t	child2;
 
@@ -52,12 +53,12 @@ int	main(int argc, char **argv, char **envp)
 	if (child1 < 0)
 		error();
 	if (child1 == 0)
-		child_process(argv, end, envp);
-	wait(&child2);
+		child1_process(argv, end, envp);
 	child2 = fork();
-	if (child1 < 0)
+	if (child2 < 0)
 		error();
 	if (child2 == 0)
-		parent_process(argv, end, envp);
+		child2_process(argv, end, envp);
+	waitpid(-1, &status, 0);
 	return (0);
 }

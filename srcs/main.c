@@ -47,7 +47,7 @@ int	main(int argc, char **argv, char **envp)
 
 	if (argc != 5)
 	{
-		write(1, "Error!\nSyntax should be: ./pipex file1 \"cmd1\" \"cmd2\" file2\n", 59);
+		write(1, "Error!\nSyntax should be: ./pipex infile \"cmd1\" \"cmd2\" outfile\n", 62);
 		exit(EXIT_FAILURE);
 	}
 	if (pipe(end) < 0)

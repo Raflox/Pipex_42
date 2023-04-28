@@ -110,7 +110,7 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:		all clean fclean re art git
+.PHONY:		all clean fclean re art
 
 define ART
 

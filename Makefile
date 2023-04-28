@@ -112,18 +112,6 @@ re:			fclean all
 
 .PHONY:		all clean fclean re art git
 
-git:
-			git status
-			git add .
-			@echo "Please enter a Commit Message:";
-   			@read MYVAR; \
-			git commit -m "$$MYVAR" \
-			@read -p "Are you sure you want to push? (y/n) " CONFIRM; \
-   			if [ "$$CONFIRM" = "y" ]; then \
-        	git push; \
-    		else \
-        	echo "Aborted."; \
-    		fi
 define ART
 
          _nnnn_

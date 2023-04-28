@@ -6,11 +6,11 @@
 /*   By: rafilipe <rafilipe@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 19:40:39 by rafilipe          #+#    #+#             */
-/*   Updated: 2023/04/25 14:13:19 by rafilipe         ###   ########.fr       */
+/*   Updated: 2023/04/28 09:19:04 by rafilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../includes/pipex.h"
 
 void	child1_process(char **argv, int *end, char **envp)
 {	

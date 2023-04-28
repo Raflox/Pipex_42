@@ -6,11 +6,11 @@
 /*   By: rafilipe <rafilipe@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 15:37:51 by rafilipe          #+#    #+#             */
-/*   Updated: 2023/04/25 13:06:30 by rafilipe         ###   ########.fr       */
+/*   Updated: 2023/04/28 09:19:17 by rafilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../includes/pipex.h"
 
 void	error(void)
 {

@@ -6,14 +6,14 @@
 /*   By: rafilipe <rafilipe@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:48:43 by rafilipe          #+#    #+#             */
-/*   Updated: 2023/04/25 13:07:56 by rafilipe         ###   ########.fr       */
+/*   Updated: 2023/04/28 09:20:05 by rafilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 
-# include "./libft/libft.h"
+# include "../libft/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
